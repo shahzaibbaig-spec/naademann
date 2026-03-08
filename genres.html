@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naad-e-Maan | Genres</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              neon: { cyan: "#3bf2ff", blue: "#4f7cff", pink: "#ff4fd8" },
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+              body: ["Sora", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="genres" data-api-base="http://127.0.0.1:8001/api" class="font-body text-white">
+    <div data-site-header></div>
+
+    <main data-genre-app class="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
+      <section class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+        <p class="section-kicker">Genre Hubs</p>
+        <h1 class="mt-4 font-display text-5xl font-semibold">Explore Sound by Energy, Mood, and Texture</h1>
+        <p data-genre-copy class="mt-5 max-w-3xl text-base leading-8 text-white/65">
+          The genre shelf is loaded from the Laravel catalog and updates the song grid through AJAX every time you switch frequency.
+        </p>
+        <div data-genre-panels class="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-5"></div>
+      </section>
+
+      <section class="mt-12 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+        <div class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+          <div class="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
+            <div>
+              <p class="section-kicker">Genre Filtering</p>
+              <h2 data-genre-title class="mt-4 font-display text-3xl font-semibold">Loading genre...</h2>
+            </div>
+            <p data-genre-results-count class="text-sm text-white/55">Loading songs...</p>
+          </div>
+
+          <label class="glass-card mt-8 block rounded-[1.5rem] border border-white/10 p-4">
+            <span class="mb-2 block text-sm text-white/50">Search within the selected genre</span>
+            <input data-genre-search type="search" placeholder="Search titles or artists" class="w-full bg-transparent text-white outline-none placeholder:text-white/30" />
+          </label>
+
+          <div data-genre-songs class="mt-8 grid gap-4"></div>
+        </div>
+
+        <div class="space-y-8">
+          <section class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+            <p class="section-kicker">Spotlight Playlists</p>
+            <h2 class="mt-4 font-display text-3xl font-semibold">Curated Routes Through the Catalog</h2>
+            <div data-genre-playlists class="mt-8 grid gap-4"></div>
+          </section>
+
+          <section class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+            <p class="section-kicker">Mood Switch</p>
+            <h2 class="mt-4 font-display text-3xl font-semibold">Scene-by-Scene Listening</h2>
+            <div data-genre-moods class="mt-8 grid gap-4 sm:grid-cols-2"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div data-site-footer></div>
+    <div data-mini-player class="pointer-events-none fixed bottom-6 left-1/2 z-50 hidden w-[min(94vw,980px)] -translate-x-1/2"></div>
+    <script src="js/animations.js"></script>
+  </body>
+</html>

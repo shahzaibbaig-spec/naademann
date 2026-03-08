@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naad-e-Maan | Artist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              neon: { cyan: "#3bf2ff", blue: "#4f7cff", pink: "#ff4fd8" },
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+              body: ["Sora", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="artists" data-api-base="http://127.0.0.1:8001/api" class="font-body text-white">
+    <div data-site-header></div>
+
+    <main data-artist-app class="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
+      <section class="glass-card overflow-hidden rounded-[2rem] border border-white/10 p-6 lg:p-8">
+        <div class="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
+          <div class="artist-hero-shell min-h-[420px]">
+            <div class="hero-equalizer">
+              <span class="wave-bar" style="height: 48px"></span>
+              <span class="wave-bar" style="height: 118px"></span>
+              <span class="wave-bar" style="height: 74px"></span>
+              <span class="wave-bar" style="height: 154px"></span>
+              <span class="wave-bar" style="height: 96px"></span>
+              <span class="wave-bar" style="height: 172px"></span>
+              <span class="wave-bar" style="height: 88px"></span>
+              <span class="wave-bar" style="height: 146px"></span>
+              <span class="wave-bar" style="height: 68px"></span>
+              <span class="wave-bar" style="height: 124px"></span>
+            </div>
+            <div class="artist-ring relative z-10 p-[10px] shadow-[0_0_55px_rgba(59,242,255,0.16)]">
+              <img data-artist-image src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=960&q=80" alt="Artist portrait" class="h-72 w-72 object-cover sm:h-80 sm:w-80" />
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-center">
+            <p class="section-kicker">Artist Hero</p>
+            <h1 data-artist-name class="mt-4 font-display text-5xl font-semibold sm:text-6xl">Loading artist...</h1>
+            <p data-artist-bio class="mt-4 max-w-2xl text-base leading-8 text-white/65">
+              Pulling the artist profile directly from the Naad-e-Maan Laravel catalog.
+            </p>
+
+            <div data-artist-tags class="mt-7 flex flex-wrap gap-3"></div>
+
+            <div class="mt-9 flex flex-col gap-4 sm:flex-row">
+              <button data-artist-play type="button" class="inline-flex items-center justify-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950">
+                <svg viewBox="0 0 24 24" class="ml-0.5 h-4 w-4" fill="currentColor" aria-hidden="true">
+                  <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+                </svg>
+                Play Music
+              </button>
+              <button data-artist-follow type="button" class="glass-card inline-flex items-center justify-center gap-3 rounded-full border border-white/10 px-6 py-3 text-sm font-medium text-white/85">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M12 4v16M4 12h16" />
+                </svg>
+                Follow Artist
+              </button>
+            </div>
+
+            <div data-artist-summary class="mt-10 grid gap-4 sm:grid-cols-3"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <div class="mb-8 flex items-end justify-between gap-6">
+          <div>
+            <p class="section-kicker">Featured Track</p>
+            <h2 class="mt-4 font-display text-3xl font-semibold">Live Player Card</h2>
+          </div>
+          <a data-artist-player-link href="player.html" class="text-sm text-neon-cyan transition hover:text-white">Open full player</a>
+        </div>
+
+        <article class="glass-card panel-glow grid gap-8 rounded-[2rem] border border-white/10 p-6 lg:grid-cols-[0.95fr_1.05fr] lg:p-8">
+          <div class="flex items-center gap-5">
+            <img data-featured-track-cover src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80" alt="Featured track cover" class="h-32 w-32 rounded-[1.5rem] object-cover shadow-[0_0_24px_rgba(59,242,255,0.12)] sm:h-40 sm:w-40" />
+            <div>
+              <p class="section-kicker">Now Featured</p>
+              <h3 data-featured-track-title class="mt-3 font-display text-3xl font-semibold">Loading track...</h3>
+              <p data-featured-track-copy class="mt-2 text-white/60">Waiting for track metadata</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-center">
+            <div class="flex flex-wrap items-center gap-4">
+              <button data-featured-track-play type="button" class="flex h-14 w-14 items-center justify-center rounded-full bg-white text-slate-950">
+                <svg viewBox="0 0 24 24" class="ml-0.5 h-6 w-6" fill="currentColor" aria-hidden="true">
+                  <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+                </svg>
+              </button>
+              <a data-featured-track-open href="player.html" class="glass-card flex h-14 items-center justify-center rounded-full border border-white/10 px-5 text-sm font-medium text-white/85">
+                Open in Player
+              </a>
+            </div>
+
+            <div class="mt-8" data-progress="0">
+              <div class="progress-track">
+                <div class="progress-fill"></div>
+              </div>
+            </div>
+
+            <div class="mt-3 flex items-center justify-between text-sm text-white/50">
+              <span>0:00</span>
+              <span data-featured-track-duration>0:00</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="mt-12">
+        <div class="mb-8 flex items-end justify-between gap-6">
+          <div>
+            <p class="section-kicker">Latest Releases</p>
+            <h2 class="mt-4 font-display text-3xl font-semibold">Catalog from This Artist</h2>
+          </div>
+          <a data-artist-browse-link href="player.html" class="text-sm text-white/55 transition hover:text-neon-cyan">Play discography</a>
+        </div>
+
+        <div data-artist-releases class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3"></div>
+      </section>
+
+      <section class="mt-12 grid gap-8 xl:grid-cols-[1.08fr_0.92fr]">
+        <div class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+          <div class="mb-8 flex items-end justify-between gap-6">
+            <div>
+              <p class="section-kicker">Music Video</p>
+              <h2 class="mt-4 font-display text-3xl font-semibold">Visual Performance</h2>
+            </div>
+            <span class="rounded-full border border-neon-pink/20 bg-neon-pink/10 px-3 py-1 text-xs text-neon-pink">YouTube</span>
+          </div>
+
+          <div class="video-shell">
+            <iframe
+              src="https://www.youtube.com/embed/ScMzIvxBSi4?rel=0"
+              title="Naad-e-Maan featured artist music video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+          <div class="mb-8 flex items-end justify-between gap-6">
+            <div>
+              <p class="section-kicker">Collaborations</p>
+              <h2 class="mt-4 font-display text-3xl font-semibold">Artist Circle</h2>
+            </div>
+            <span class="text-sm text-white/45">Swipe horizontally</span>
+          </div>
+
+          <div data-artist-collaborations class="artist-strip"></div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <div class="mb-8">
+          <p class="section-kicker">Fan Stats</p>
+          <h2 class="mt-4 font-display text-3xl font-semibold">Animated Audience Counters</h2>
+        </div>
+
+        <div data-artist-stats class="grid gap-5 md:grid-cols-3"></div>
+      </section>
+    </main>
+
+    <div data-site-footer></div>
+    <div data-mini-player class="pointer-events-none fixed bottom-6 left-1/2 z-50 hidden w-[min(94vw,980px)] -translate-x-1/2"></div>
+    <script src="js/animations.js"></script>
+  </body>
+</html>

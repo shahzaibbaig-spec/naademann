@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naad-e-Maan | Artist Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script>
+      tailwind.config = { theme: { extend: { colors: { neon: { cyan: "#3bf2ff", blue: "#4f7cff", pink: "#ff4fd8" } }, fontFamily: { display: ["Space Grotesk", "sans-serif"], body: ["Sora", "sans-serif"] } } } };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="dashboard" class="font-body text-white">
+    <div data-site-header></div>
+
+    <main class="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
+      <section class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="section-kicker">Artist Dashboard</p>
+            <h1 class="mt-4 font-display text-5xl font-semibold">Performance at a Glance</h1>
+            <p class="mt-4 max-w-3xl text-base leading-8 text-white/65">Track listener growth, regional response, and release performance through a dashboard tuned for fast decisions and clear storytelling.</p>
+          </div>
+          <a href="creators.html" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950">Release New Music</a>
+        </div>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <article class="rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-5"><p class="text-sm text-white/50">Monthly Streams</p><p class="mt-2 font-display text-4xl font-semibold">12.4M</p></article>
+          <article class="rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-5"><p class="text-sm text-white/50">Followers</p><p class="mt-2 font-display text-4xl font-semibold">981K</p></article>
+          <article class="rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-5"><p class="text-sm text-white/50">Saves</p><p class="mt-2 font-display text-4xl font-semibold">284K</p></article>
+          <article class="rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-5"><p class="text-sm text-white/50">Engagement</p><p class="mt-2 font-display text-4xl font-semibold">+18%</p></article>
+        </div>
+      </section>
+
+      <section class="mt-12 grid gap-8 xl:grid-cols-[1.1fr_0.9fr]">
+        <article class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+          <div class="flex items-end justify-between gap-4"><div><p class="section-kicker">Streams</p><h2 class="mt-4 font-display text-3xl font-semibold">6-Month Growth</h2></div><span class="rounded-full border border-neon-cyan/20 bg-neon-cyan/10 px-3 py-1 text-xs text-neon-cyan">+23% trend</span></div>
+          <div class="dashboard-chart mt-10">
+            <div class="dashboard-column"><div class="w-full rounded-t-[1.5rem] bg-white/5 p-2"><div class="dash-bar h-0 transition-all duration-700" data-bar-height="36%"></div></div><span class="text-xs text-white/45">Oct</span></div>
+            <div class="dashboard-column"><div class="w-full rounded-t-[1.5rem] bg-white/5 p-2"><div class="dash-bar h-0 transition-all duration-700" data-bar-height="48%"></div></div><span class="text-xs text-white/45">Nov</span></div>
+            <div class="dashboard-column"><div class="w-full rounded-t-[1.5rem] bg-white/5 p-2"><div class="dash-bar h-0 transition-all duration-700" data-bar-height="54%"></div></div><span class="text-xs text-white/45">Dec</span></div>
+            <div class="dashboard-column"><div class="w-full rounded-t-[1.5rem] bg-white/5 p-2"><div class="dash-bar h-0 transition-all duration-700" data-bar-height="62%"></div></div><span class="text-xs text-white/45">Jan</span></div>
+            <div class="dashboard-column"><div class="w-full rounded-t-[1.5rem] bg-white/5 p-2"><div class="dash-bar h-0 transition-all duration-700" data-bar-height="76%"></div></div><span class="text-xs text-white/45">Feb</span></div>
+            <div class="dashboard-column"><div class="w-full rounded-t-[1.5rem] bg-white/5 p-2"><div class="dash-bar h-0 transition-all duration-700" data-bar-height="88%"></div></div><span class="text-xs text-white/45">Mar</span></div>
+          </div>
+        </article>
+        <article class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+          <p class="section-kicker">Audience</p><h2 class="mt-4 font-display text-3xl font-semibold">Top Regions</h2>
+          <div class="mt-8 space-y-4">
+            <div class="rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-5"><div class="flex items-center justify-between"><span>Karachi</span><span class="text-neon-cyan">32%</span></div><div class="mt-3 progress-track"><div class="progress-fill" style="width:32%"></div></div></div>
+            <div class="rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-5"><div class="flex items-center justify-between"><span>Lahore</span><span class="text-neon-cyan">22%</span></div><div class="mt-3 progress-track"><div class="progress-fill" style="width:22%"></div></div></div>
+            <div class="rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-5"><div class="flex items-center justify-between"><span>Dubai</span><span class="text-neon-cyan">14%</span></div><div class="mt-3 progress-track"><div class="progress-fill" style="width:14%"></div></div></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="mt-12 grid gap-8 lg:grid-cols-[1.02fr_0.98fr]">
+        <article class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+          <p class="section-kicker">Releases</p><h2 class="mt-4 font-display text-3xl font-semibold">Recent Catalog Activity</h2>
+          <div class="mt-8 space-y-3">
+            <div class="flex items-center justify-between rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-4"><div><p class="font-semibold">Aurora Veil</p><p class="text-sm text-white/50">Album</p></div><span class="text-sm text-white/55">4.8M streams</span></div>
+            <div class="flex items-center justify-between rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-4"><div><p class="font-semibold">Silver Thread</p><p class="text-sm text-white/50">EP</p></div><span class="text-sm text-white/55">2.1M streams</span></div>
+            <div class="flex items-center justify-between rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-4"><div><p class="font-semibold">Blue Lantern</p><p class="text-sm text-white/50">Single</p></div><span class="text-sm text-white/55">1.2M streams</span></div>
+          </div>
+        </article>
+        <article class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+          <p class="section-kicker">Schedule</p><h2 class="mt-4 font-display text-3xl font-semibold">Pipeline</h2>
+          <div class="mt-8 space-y-4">
+            <div class="rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-5"><p class="text-sm text-white/45">March 21</p><h3 class="mt-2 font-semibold">Single Release: Luminous Tide</h3><p class="mt-1 text-sm text-white/55">Audio + visual loop + lyric canvas.</p></div>
+            <div class="rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-5"><p class="text-sm text-white/45">April 03</p><h3 class="mt-2 font-semibold">Live Session Drop</h3><p class="mt-1 text-sm text-white/55">Neon room performance and fan Q&amp;A.</p></div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <div data-site-footer></div>
+    <script src="js/animations.js"></script>
+  </body>
+</html>

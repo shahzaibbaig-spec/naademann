@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naad-e-Maan | The Sound of the Soul</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              neon: { cyan: "#3bf2ff", blue: "#4f7cff", pink: "#ff4fd8" },
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+              body: ["Sora", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="home" data-api-base="http://127.0.0.1:8001/api" class="font-body text-white">
+    <div data-site-header></div>
+
+    <main data-home-app>
+      <section class="relative overflow-hidden">
+        <div class="orb orb-cyan left-[10%] top-20 h-32 w-32"></div>
+        <div class="orb orb-pink right-[12%] top-32 h-32 w-32"></div>
+        <div class="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:py-24">
+          <div class="flex flex-col justify-center">
+            <p class="section-kicker">Laravel Streaming Platform</p>
+            <h1 class="hero-title mt-5 text-5xl font-bold leading-none sm:text-6xl lg:text-7xl">
+              <span class="headline-gradient">Naad-e-Maan</span>
+            </h1>
+            <p class="neon-text mt-5 text-2xl font-semibold sm:text-3xl">The Sound of the Soul</p>
+            <p class="mt-6 max-w-2xl text-base leading-8 text-white/68 sm:text-lg">
+              Real MP3 streaming, live artist profiles, playlist building, genre filters, and account-backed listening sessions now run through the Naad-e-Maan Laravel API.
+            </p>
+            <div class="mt-9 flex flex-col gap-4 sm:flex-row">
+              <a href="player.html" class="inline-flex items-center justify-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950">
+                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-950 text-white">
+                  <svg viewBox="0 0 24 24" class="ml-0.5 h-4 w-4" fill="currentColor" aria-hidden="true">
+                    <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+                  </svg>
+                </span>
+                Open Live Player
+              </a>
+              <a href="artist.html" class="glass-card inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-sm font-medium text-white/85">Explore Artists</a>
+            </div>
+            <div class="mt-10 grid gap-4 sm:grid-cols-3">
+              <article class="glass-card rounded-[1.5rem] border border-white/10 p-5">
+                <p class="text-sm text-white/50">Playback</p>
+                <p class="mt-2 text-xl font-semibold">Real MP3 Streaming</p>
+              </article>
+              <article class="glass-card rounded-[1.5rem] border border-white/10 p-5">
+                <p class="text-sm text-white/50">Discovery</p>
+                <p class="mt-2 text-xl font-semibold">AJAX Search + Filters</p>
+              </article>
+              <article class="glass-card rounded-[1.5rem] border border-white/10 p-5">
+                <p class="text-sm text-white/50">Accounts</p>
+                <p class="mt-2 text-xl font-semibold">Playlists + User Sessions</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="relative mx-auto w-full max-w-2xl">
+            <article data-home-featured class="glass-card sound-grid panel-glow relative overflow-hidden rounded-[2rem] p-5 sm:p-7">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <p class="section-kicker">Featured Track</p>
+                  <h2 data-home-featured-title class="mt-3 font-display text-3xl font-semibold">Loading the signal...</h2>
+                  <p data-home-featured-artist class="mt-2 text-white/60">Connecting to the music graph</p>
+                </div>
+                <span class="rounded-full border border-neon-cyan/20 bg-neon-cyan/10 px-3 py-1 text-xs font-medium text-neon-cyan">API Live</span>
+              </div>
+              <div class="mt-7 grid gap-6 md:grid-cols-[0.92fr_1.08fr]">
+                <div class="music-pulse relative overflow-hidden rounded-[1.75rem]">
+                  <img data-home-featured-cover src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=80" alt="Featured album art" class="h-full min-h-[320px] w-full object-cover" />
+                </div>
+                <div class="flex flex-col justify-between rounded-[1.75rem] border border-white/10 bg-slate-950/50 p-6">
+                  <div>
+                    <p class="text-sm uppercase tracking-[0.28em] text-white/40">Now Streaming</p>
+                    <p data-home-featured-genre class="mt-3 text-sm uppercase tracking-[0.28em] text-neon-cyan/75">Featured</p>
+                    <p data-home-featured-copy class="mt-4 text-base leading-8 text-white/60">
+                      The primary release shelf is loaded directly from the Laravel catalog and ready for instant playback.
+                    </p>
+                  </div>
+                  <div class="wave-bars mt-8 h-28">
+                    <span class="wave-bar" style="height: 35px"></span><span class="wave-bar" style="height: 62px"></span><span class="wave-bar" style="height: 48px"></span><span class="wave-bar" style="height: 78px"></span><span class="wave-bar" style="height: 54px"></span><span class="wave-bar" style="height: 68px"></span><span class="wave-bar" style="height: 44px"></span><span class="wave-bar" style="height: 76px"></span><span class="wave-bar" style="height: 58px"></span><span class="wave-bar" style="height: 66px"></span><span class="wave-bar" style="height: 36px"></span><span class="wave-bar" style="height: 72px"></span>
+                  </div>
+                  <div class="mt-8 flex items-center justify-between gap-4">
+                    <button data-home-featured-play type="button" class="inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950">
+                      <span class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-white">
+                        <svg viewBox="0 0 24 24" class="ml-0.5 h-4 w-4" fill="currentColor" aria-hidden="true">
+                          <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+                        </svg>
+                      </span>
+                      Play Featured
+                    </button>
+                    <a data-home-featured-link href="player.html" class="rounded-full border border-white/10 px-4 py-2 text-sm text-white/70 transition hover:text-neon-cyan">Open in Player</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto grid max-w-7xl gap-8 px-6 py-10 lg:grid-cols-[1.32fr_0.68fr] lg:px-8">
+        <div class="space-y-8">
+          <section class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+            <div class="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
+              <div>
+                <p class="section-kicker">Music Search</p>
+                <h2 class="mt-4 font-display text-3xl font-semibold">Search, Filter, and Load Songs Dynamically</h2>
+              </div>
+              <p data-song-results-count class="text-sm text-white/55">Loading catalog...</p>
+            </div>
+
+            <div class="mt-8 grid gap-4 md:grid-cols-[1fr_240px]">
+              <label class="glass-card rounded-[1.5rem] border border-white/10 p-4">
+                <span class="mb-2 block text-sm text-white/50">Search songs, artists, or genres</span>
+                <input data-song-search type="search" placeholder="Search for Echoes in Blue, Mira Skye, Neo-Soul..." class="w-full bg-transparent text-white outline-none placeholder:text-white/30" />
+              </label>
+              <label class="glass-card rounded-[1.5rem] border border-white/10 p-4">
+                <span class="mb-2 block text-sm text-white/50">Genre filter</span>
+                <select data-song-genre class="w-full bg-transparent text-white outline-none">
+                  <option value="" class="bg-slate-950">All genres</option>
+                </select>
+              </label>
+            </div>
+          </section>
+
+          <section>
+            <div class="mb-8 flex items-end justify-between gap-6">
+              <div>
+                <p class="section-kicker">Latest Releases</p>
+                <h2 class="mt-4 font-display text-3xl font-semibold">Live Catalog Shelf</h2>
+              </div>
+              <a href="player.html" class="text-sm text-white/55 transition hover:text-neon-cyan">Open full player</a>
+            </div>
+            <div data-latest-releases-grid class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3"></div>
+          </section>
+        </div>
+
+        <aside class="space-y-8">
+          <section data-auth-card class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+            <div class="flex items-end justify-between gap-6">
+              <div>
+                <p class="section-kicker">User Accounts</p>
+                <h2 class="mt-4 font-display text-3xl font-semibold">Sign In to Build Playlists</h2>
+              </div>
+              <span class="rounded-full border border-neon-pink/20 bg-neon-pink/10 px-3 py-1 text-xs text-neon-pink">API Auth</span>
+            </div>
+
+            <div data-auth-message class="hidden mt-6 rounded-[1.5rem] px-4 py-3 text-sm"></div>
+
+            <div data-auth-guest class="mt-8 space-y-6">
+              <form data-login-form class="grid gap-4">
+                <h3 class="font-display text-2xl font-semibold">Login</h3>
+                <label class="glass-card rounded-[1.5rem] border border-white/10 p-4">
+                  <span class="mb-2 block text-sm text-white/50">Email</span>
+                  <input name="email" type="email" value="listener@naademaan.test" class="w-full bg-transparent text-white outline-none placeholder:text-white/30" required />
+                </label>
+                <label class="glass-card rounded-[1.5rem] border border-white/10 p-4">
+                  <span class="mb-2 block text-sm text-white/50">Password</span>
+                  <input name="password" type="password" value="password" class="w-full bg-transparent text-white outline-none placeholder:text-white/30" required />
+                </label>
+                <button type="submit" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950">Log In</button>
+              </form>
+
+              <div class="border-t border-white/10 pt-6">
+                <form data-register-form class="grid gap-4">
+                  <h3 class="font-display text-2xl font-semibold">Create account</h3>
+                  <label class="glass-card rounded-[1.5rem] border border-white/10 p-4">
+                    <span class="mb-2 block text-sm text-white/50">Name</span>
+                    <input name="name" type="text" placeholder="Naad Listener" class="w-full bg-transparent text-white outline-none placeholder:text-white/30" required />
+                  </label>
+                  <label class="glass-card rounded-[1.5rem] border border-white/10 p-4">
+                    <span class="mb-2 block text-sm text-white/50">Email</span>
+                    <input name="email" type="email" placeholder="you@example.com" class="w-full bg-transparent text-white outline-none placeholder:text-white/30" required />
+                  </label>
+                  <label class="glass-card rounded-[1.5rem] border border-white/10 p-4">
+                    <span class="mb-2 block text-sm text-white/50">Password</span>
+                    <input name="password" type="password" placeholder="Create a password" class="w-full bg-transparent text-white outline-none placeholder:text-white/30" required />
+                  </label>
+                  <button type="submit" class="glass-card inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-white">Create Account</button>
+                </form>
+              </div>
+            </div>
+
+            <div data-auth-user class="hidden mt-8 space-y-5">
+              <div class="flex items-center gap-4">
+                <img data-auth-avatar src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="User avatar" class="h-16 w-16 rounded-full object-cover" />
+                <div>
+                  <h3 data-auth-name class="text-xl font-semibold">Naad Listener</h3>
+                  <p data-auth-email class="text-sm text-white/55">listener@naademaan.test</p>
+                </div>
+              </div>
+              <div data-auth-artists class="flex flex-wrap gap-3"></div>
+              <button data-auth-logout type="button" class="glass-card inline-flex items-center justify-center rounded-full border border-white/10 px-5 py-3 text-sm font-medium text-white/85">
+                Log Out
+              </button>
+            </div>
+          </section>
+
+          <section class="glass-card rounded-[2rem] border border-white/10 p-6 lg:p-8">
+            <div class="flex items-end justify-between gap-6">
+              <div>
+                <p class="section-kicker">Playlist System</p>
+                <h2 class="mt-4 font-display text-3xl font-semibold">Build from Selected Songs</h2>
+              </div>
+              <span class="text-sm text-white/45">Auth required</span>
+            </div>
+
+            <div class="mt-6 rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-4">
+              <p class="text-sm uppercase tracking-[0.28em] text-white/45">Selected songs</p>
+              <div data-selected-songs class="mt-4 space-y-3"></div>
+              <p data-selected-empty class="mt-4 text-sm text-white/50">Use the + buttons in Latest Releases to collect songs for a playlist.</p>
+            </div>
+
+            <form data-playlist-form class="mt-6 grid gap-4">
+              <label class="glass-card rounded-[1.5rem] border border-white/10 p-4">
+                <span class="mb-2 block text-sm text-white/50">Playlist name</span>
+                <input name="name" type="text" placeholder="Night Drive Resonance" class="w-full bg-transparent text-white outline-none placeholder:text-white/30" required />
+              </label>
+              <label class="glass-card rounded-[1.5rem] border border-white/10 p-4">
+                <span class="mb-2 block text-sm text-white/50">Description</span>
+                <textarea name="description" rows="3" placeholder="Curated late-night tracks with neon edges." class="w-full resize-none bg-transparent text-white outline-none placeholder:text-white/30"></textarea>
+              </label>
+              <label class="flex items-center gap-3 text-sm text-white/70">
+                <input name="is_public" type="checkbox" checked class="h-4 w-4 rounded border-white/20 bg-transparent text-neon-cyan focus:ring-neon-cyan" />
+                Make playlist public
+              </label>
+              <button type="submit" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950">
+                Create Playlist
+              </button>
+            </form>
+          </section>
+        </aside>
+      </section>
+
+      <section id="artists" class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+        <div class="mb-8 flex items-end justify-between gap-6">
+          <div>
+            <p class="section-kicker">Artist Profiles</p>
+            <h2 class="mt-4 font-display text-3xl font-semibold">Voices Shaping the Platform</h2>
+          </div>
+          <a href="artist.html" class="text-sm text-white/55 transition hover:text-neon-cyan">Open artist page</a>
+        </div>
+        <div data-home-artists class="artist-strip"></div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+        <div class="mb-8 flex items-end justify-between gap-6">
+          <div>
+            <p class="section-kicker">Playlists</p>
+            <h2 class="mt-4 font-display text-3xl font-semibold">Public and Personal Collections</h2>
+          </div>
+          <a href="player.html" class="text-sm text-white/55 transition hover:text-neon-cyan">Listen in player</a>
+        </div>
+        <div data-playlist-grid class="grid gap-6 lg:grid-cols-3"></div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+        <div class="mb-8 flex items-end justify-between gap-6">
+          <div>
+            <p class="section-kicker">Visual Panels</p>
+            <h2 class="mt-4 font-display text-3xl font-semibold">Sound in Six Neon Frames</h2>
+          </div>
+          <a href="player.html" class="text-sm text-white/55 transition hover:text-neon-cyan">Open the player</a>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+          <article class="image-panel mx-auto">
+            <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80" alt="Neon concert stage" />
+            <div class="image-panel-overlay">
+              <div>
+                <p class="text-xs uppercase tracking-[0.28em] text-white/45">Visual</p>
+                <h3 class="mt-2 text-xl font-semibold">Neon Concert Stage</h3>
+              </div>
+              <span class="image-panel-play">
+                <svg viewBox="0 0 24 24" class="ml-0.5 h-5 w-5" fill="currentColor" aria-hidden="true">
+                  <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+                </svg>
+              </span>
+            </div>
+          </article>
+
+          <article class="image-panel mx-auto">
+            <img src="https://images.unsplash.com/photo-1571266028243-d220c9f57945?auto=format&fit=crop&w=900&q=80" alt="DJ mixing console" />
+            <div class="image-panel-overlay">
+              <div>
+                <p class="text-xs uppercase tracking-[0.28em] text-white/45">Visual</p>
+                <h3 class="mt-2 text-xl font-semibold">DJ Mixing Console</h3>
+              </div>
+              <span class="image-panel-play">
+                <svg viewBox="0 0 24 24" class="ml-0.5 h-5 w-5" fill="currentColor" aria-hidden="true">
+                  <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+                </svg>
+              </span>
+            </div>
+          </article>
+
+          <article class="image-panel mx-auto">
+            <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80" alt="Hip hop rapper portrait" />
+            <div class="image-panel-overlay">
+              <div>
+                <p class="text-xs uppercase tracking-[0.28em] text-white/45">Visual</p>
+                <h3 class="mt-2 text-xl font-semibold">Hip Hop Rapper Portrait</h3>
+              </div>
+              <span class="image-panel-play">
+                <svg viewBox="0 0 24 24" class="ml-0.5 h-5 w-5" fill="currentColor" aria-hidden="true">
+                  <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+                </svg>
+              </span>
+            </div>
+          </article>
+
+          <article class="image-panel mx-auto">
+            <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=900&q=80" alt="Guitar stage lights" />
+            <div class="image-panel-overlay">
+              <div>
+                <p class="text-xs uppercase tracking-[0.28em] text-white/45">Visual</p>
+                <h3 class="mt-2 text-xl font-semibold">Guitar Stage Lights</h3>
+              </div>
+              <span class="image-panel-play">
+                <svg viewBox="0 0 24 24" class="ml-0.5 h-5 w-5" fill="currentColor" aria-hidden="true">
+                  <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+                </svg>
+              </span>
+            </div>
+          </article>
+
+          <article class="image-panel mx-auto">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80" alt="Headphones closeup" />
+            <div class="image-panel-overlay">
+              <div>
+                <p class="text-xs uppercase tracking-[0.28em] text-white/45">Visual</p>
+                <h3 class="mt-2 text-xl font-semibold">Headphones Closeup</h3>
+              </div>
+              <span class="image-panel-play">
+                <svg viewBox="0 0 24 24" class="ml-0.5 h-5 w-5" fill="currentColor" aria-hidden="true">
+                  <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+                </svg>
+              </span>
+            </div>
+          </article>
+
+          <article class="image-panel mx-auto">
+            <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=900&q=80" alt="Vinyl record" />
+            <div class="image-panel-overlay">
+              <div>
+                <p class="text-xs uppercase tracking-[0.28em] text-white/45">Visual</p>
+                <h3 class="mt-2 text-xl font-semibold">Vinyl Record</h3>
+              </div>
+              <span class="image-panel-play">
+                <svg viewBox="0 0 24 24" class="ml-0.5 h-5 w-5" fill="currentColor" aria-hidden="true">
+                  <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+                </svg>
+              </span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+        <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <article class="glass-card rounded-[1.75rem] border border-white/10 p-6">
+            <p class="text-sm uppercase tracking-[0.28em] text-white/45">Listeners</p>
+            <p class="stat-number mt-4 text-4xl font-semibold" data-counter="86" data-suffix="M">0</p>
+            <p class="mt-2 text-sm text-white/55">Global listeners tuned into Naad-e-Maan sessions.</p>
+          </article>
+          <article class="glass-card rounded-[1.75rem] border border-white/10 p-6">
+            <p class="text-sm uppercase tracking-[0.28em] text-white/45">Songs</p>
+            <p class="stat-number mt-4 text-4xl font-semibold" data-counter="10000">0</p>
+            <p class="mt-2 text-sm text-white/55">Tracks layered across curated moods and drops.</p>
+          </article>
+          <article class="glass-card rounded-[1.75rem] border border-white/10 p-6">
+            <p class="text-sm uppercase tracking-[0.28em] text-white/45">Artists</p>
+            <p class="stat-number mt-4 text-4xl font-semibold" data-counter="100" data-suffix="+">0</p>
+            <p class="mt-2 text-sm text-white/55">Voices spanning underground discoveries and established names.</p>
+          </article>
+          <article class="glass-card rounded-[1.75rem] border border-white/10 p-6">
+            <p class="text-sm uppercase tracking-[0.28em] text-white/45">Creators</p>
+            <p class="stat-number mt-4 text-4xl font-semibold" data-counter="90" data-suffix="+">0</p>
+            <p class="mt-2 text-sm text-white/55">Independent creators uploading original sound and visual stories.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="creators" class="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:pb-20">
+        <div class="glass-card grid gap-10 overflow-hidden rounded-[2rem] border border-white/10 p-8 lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
+          <div class="flex flex-col justify-center">
+            <p class="section-kicker">Calling All Creators</p>
+            <h2 class="mt-4 font-display text-4xl font-semibold">Bring your sound into the resonance field.</h2>
+            <p class="mt-5 max-w-2xl text-base leading-8 text-white/65">
+              The platform now handles streaming and user accounts through Laravel. The creator portal still lets artists stage uploads and preview new drops.
+            </p>
+            <div class="mt-8">
+              <a href="creators.html" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950">Upload Your Sound</a>
+            </div>
+          </div>
+          <div class="relative flex items-center justify-center">
+            <div class="orb orb-cyan h-28 w-28"></div>
+            <div class="glass-card relative flex h-72 w-72 items-center justify-center rounded-[2rem] border border-white/10">
+              <svg viewBox="0 0 240 240" class="h-52 w-52" fill="none" aria-hidden="true">
+                <path d="M62 118v-7a58 58 0 0 1 116 0v7" stroke="rgba(255,255,255,0.92)" stroke-width="10" stroke-linecap="round" />
+                <rect x="48" y="114" width="34" height="72" rx="17" fill="rgba(59,242,255,0.18)" stroke="rgba(59,242,255,0.9)" stroke-width="6" />
+                <rect x="158" y="114" width="34" height="72" rx="17" fill="rgba(255,79,216,0.18)" stroke="rgba(255,79,216,0.9)" stroke-width="6" />
+                <path d="M78 175c16 11 34 17 54 17 22 0 41-7 58-20" stroke="rgba(255,255,255,0.84)" stroke-width="8" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-site-footer></div>
+    <div data-mini-player class="pointer-events-none fixed bottom-6 left-1/2 z-50 hidden w-[min(94vw,980px)] -translate-x-1/2"></div>
+    <script src="js/animations.js"></script>
+  </body>
+</html>
