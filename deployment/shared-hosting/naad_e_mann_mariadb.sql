@@ -1,5 +1,5 @@
 -- MariaDB import dump generated from SQLite
--- Generated at: 2026-03-08 17:42:49 UTC
+-- Generated at: 2026-03-09 11:22:31 UTC
 
 SET NAMES utf8mb4;
 SET SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO';
@@ -497,7 +497,10 @@ INSERT INTO `playlists` (`id`, `user_id`, `name`, `slug`, `description`, `cover_
 
 -- Data for sessions
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('15pjySfluIW0GMkND09PQzjphsZG0rfZFANkRg6c', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.2161', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWDVJR0swYUxJSTFPTTdCaFZWQVN0S0U0NWxqZXJEYlZocUFyWHlHTiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMSI7czo1OiJyb3V0ZSI7czo0OiJob21lIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1773054194),
 ('Dfzx6rqpA4YXhgFF7yCQcazHBavI6JgaF4L5ezCJ', NULL, '127.0.0.1', 'curl/8.10.1', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoidmZKM0g0WG1zd0ZuYWNtYjhMUjhNd1pySlpEdW1kTHlBMmx0RWVwdiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1772928328),
+('HHIOH0BiBh9CvXE5I0bYyyRlTQyaLTxa3vKRsAJ9', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWlNHeTdvZzdxTGlUUzZ4S2h3YUJEVGVNdmxxZ2RSSVFkdmZ3V1dNWCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMSI7czo1OiJyb3V0ZSI7czo0OiJob21lIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1772992446),
+('TgruzuHXHTzUhrEA8AOWjkxDUe9taMR0ip4owZR7', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiVXJpY25DT1U5QUlnN1pGNTZTWGg5dnFRVFhEcTk5N1ZGWkxQTVZpaSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMSI7czo1OiJyb3V0ZSI7czo0OiJob21lIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1773054429),
 ('ZCa8KGipYtDDsEQdUdibr5KOxfHJQIpjJ73GOPwm', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiNUFSZDc4aGhFOEhpRkpoZldrdml0ZFVyeHJxN3hoNEFmYWVwd2NVSSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMS9sb2dpbiI7czo1OiJyb3V0ZSI7czo1OiJsb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1772979585),
 ('ae6jnQ0HLU2DYvEXkdsWOCXXPzov2irzDqTT7d5D', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiSHFwVlJmd1g0UEo3WlgxMEJlbVpnYjZpRERPcnBBUVZUZVNCSWdzRSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMSI7czo1OiJyb3V0ZSI7czo0OiJob21lIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1772930641),
 ('ddjSaNxA8ASJC60BJoF6xd9slAZlS7fJVKWLRCqA', NULL, '127.0.0.1', 'curl/8.10.1', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoidTVHbHQzTDRkeHU5SUJmQ3VKVGIzcEdBQXV2cXFMTmE0OU1KdHJsMyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1772930443),
