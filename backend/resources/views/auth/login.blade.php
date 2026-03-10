@@ -7,12 +7,7 @@
     <div class="glass-card rounded-[2rem] border border-white/10 p-8">
       <p class="section-kicker">Welcome Back</p>
       <h1 class="mt-4 font-display text-4xl font-semibold">Login to Naad-e-Maan</h1>
-      <p class="mt-5 text-base leading-8 text-white/65">Use the seeded demo accounts to access listener, creator, and admin experiences.</p>
-
-      <div class="mt-6 rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-5 text-sm text-white/60">
-        Listener: <code>listener@naademaan.test</code> - Creator: <code>mira@naademaan.test</code> - Admin: <code>admin@naademaan.test</code><br>
-        Password: <code>password</code>
-      </div>
+      <p class="mt-5 text-base leading-8 text-white/65">Sign in with your account credentials to access your dashboard and music workspace.</p>
 
       <form method="POST" action="{{ route('login.store') }}" class="mt-8 grid gap-4">
         @csrf
