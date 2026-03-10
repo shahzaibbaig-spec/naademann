@@ -64,9 +64,13 @@ Route::prefix('admin')
     ->group(function (): void {
         Route::get('/dashboard', AdminDashboardController::class)->name('dashboard');
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::post('/users', [UserController::class, 'store'])->name('users.store');
         Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
         Route::get('/artists', [AdminArtistController::class, 'index'])->name('artists.index');
+        Route::post('/artists', [AdminArtistController::class, 'store'])->name('artists.store');
         Route::put('/artists/{artist}', [AdminArtistController::class, 'update'])->name('artists.update');
+        Route::delete('/artists/{artist}', [AdminArtistController::class, 'destroy'])->name('artists.destroy');
         Route::get('/uploads', [AdminUploadController::class, 'index'])->name('uploads.index');
         Route::post('/uploads', [AdminUploadController::class, 'store'])->name('uploads.store');
         Route::get('/moderation', [TrackModerationController::class, 'index'])->name('moderation.index');

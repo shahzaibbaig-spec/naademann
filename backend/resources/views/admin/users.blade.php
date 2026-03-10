@@ -30,6 +30,35 @@
         <p class="text-sm text-white/45">{{ number_format($users->total()) }} users</p>
       </div>
 
+      @can('create', \App\Models\User::class)
+        <form method="POST" action="{{ route('admin.users.store') }}" class="mt-6 grid gap-4 rounded-[1.5rem] border border-neon-cyan/20 bg-slate-950/35 p-5 md:grid-cols-4">
+          @csrf
+          <label class="md:col-span-1">
+            <span class="mb-2 block text-xs uppercase tracking-[0.2em] text-white/45">Name</span>
+            <input name="name" type="text" required class="w-full rounded-xl border border-white/10 bg-transparent px-3 py-2 text-white outline-none">
+          </label>
+          <label class="md:col-span-1">
+            <span class="mb-2 block text-xs uppercase tracking-[0.2em] text-white/45">Email</span>
+            <input name="email" type="email" required class="w-full rounded-xl border border-white/10 bg-transparent px-3 py-2 text-white outline-none">
+          </label>
+          <label class="md:col-span-1">
+            <span class="mb-2 block text-xs uppercase tracking-[0.2em] text-white/45">Password</span>
+            <input name="password" type="password" required class="w-full rounded-xl border border-white/10 bg-transparent px-3 py-2 text-white outline-none">
+          </label>
+          <label class="md:col-span-1">
+            <span class="mb-2 block text-xs uppercase tracking-[0.2em] text-white/45">Role</span>
+            <select name="role" class="w-full rounded-xl border border-white/10 bg-slate-950/70 px-3 py-2 text-white outline-none">
+              @foreach (['listener', 'creator', 'admin', 'super_admin'] as $role)
+                <option value="{{ $role }}">{{ ucfirst($role) }}</option>
+              @endforeach
+            </select>
+          </label>
+          <div class="md:col-span-4 flex justify-end">
+            <button type="submit" class="rounded-full border border-neon-pink/30 bg-neon-pink/15 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-neon-pink">Create User</button>
+          </div>
+        </form>
+      @endcan
+
       <div class="mt-6 overflow-x-auto">
         <table class="w-full min-w-[980px] text-left text-sm">
           <thead class="text-white/45">
@@ -38,7 +67,7 @@
               <th class="pb-4">Role</th>
               <th class="pb-4">Linked Artists</th>
               <th class="pb-4">Joined</th>
-              <th class="pb-4 text-right">Update</th>
+              <th class="pb-4 text-right">Actions</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-white/10">
@@ -64,16 +93,25 @@
                 <td class="py-4 text-white/60">{{ number_format($user->artists_count) }}</td>
                 <td class="py-4 text-white/60">{{ $user->created_at?->format('M d, Y') }}</td>
                 <td class="py-4">
-                  <form method="POST" action="{{ route('admin.users.update', $user) }}" class="flex items-center justify-end gap-3">
-                    @csrf
-                    @method('PUT')
-                    <select name="role" class="rounded-full border border-white/10 bg-slate-950/70 px-3 py-2 text-white">
-                      @foreach (['listener', 'creator', 'admin', 'super_admin'] as $role)
-                        <option value="{{ $role }}" @selected($user->role === $role)>{{ ucfirst($role) }}</option>
-                      @endforeach
-                    </select>
-                    <button type="submit" class="rounded-full border border-neon-cyan/20 bg-neon-cyan/10 px-4 py-2 text-xs font-semibold text-neon-cyan">Save</button>
-                  </form>
+                  <div class="flex items-center justify-end gap-3">
+                    <form method="POST" action="{{ route('admin.users.update', $user) }}" class="flex items-center gap-3">
+                      @csrf
+                      @method('PUT')
+                      <select name="role" class="rounded-full border border-white/10 bg-slate-950/70 px-3 py-2 text-white">
+                        @foreach (['listener', 'creator', 'admin', 'super_admin'] as $role)
+                          <option value="{{ $role }}" @selected($user->role === $role)>{{ ucfirst($role) }}</option>
+                        @endforeach
+                      </select>
+                      <button type="submit" class="rounded-full border border-neon-cyan/20 bg-neon-cyan/10 px-4 py-2 text-xs font-semibold text-neon-cyan">Save</button>
+                    </form>
+                    @can('delete', $user)
+                      <form method="POST" action="{{ route('admin.users.destroy', $user) }}" onsubmit="return confirm('Delete this user account?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="rounded-full border border-rose-400/30 bg-rose-500/10 px-4 py-2 text-xs font-semibold text-rose-300">Delete</button>
+                      </form>
+                    @endcan
+                  </div>
                 </td>
               </tr>
             @endforeach

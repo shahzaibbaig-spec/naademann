@@ -67,7 +67,7 @@
               </label>
               <label class="glass-card rounded-[1.5rem] border border-white/10 p-4 md:col-span-2">
                 <span class="mb-2 block text-sm text-white/50">Profile Image URL</span>
-                <input name="image_url" type="url" value="{{ $artist->image_url }}" class="w-full bg-transparent text-white outline-none">
+                <input name="image_url" type="text" value="{{ $artist->image_url }}" placeholder="https://... or /storage/uploads/artists/..." class="w-full bg-transparent text-white outline-none">
               </label>
               <label class="glass-card rounded-[1.5rem] border border-white/10 p-4 md:col-span-2">
                 <span class="mb-2 block text-sm text-white/50">Or Upload New Image</span>

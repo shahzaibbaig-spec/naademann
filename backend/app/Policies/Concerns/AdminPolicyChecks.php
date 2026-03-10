@@ -10,4 +10,9 @@ trait AdminPolicyChecks
     {
         return $user->isAdmin();
     }
+
+    protected function isSuperAdmin(User $user): bool
+    {
+        return $user->role === 'super_admin';
+    }
 }
