@@ -66,7 +66,7 @@ class ListenController extends WebController
                 ->filter()
                 ->values();
 
-            $playlist->setAttribute('queue_payload', $this->serializeTracks($queue));
+            $playlist->setAttribute('queue_payload', $this->serializeQueueTracks($queue));
         });
 
         $activePlaylistSlug = $request->string('playlist')->toString();
@@ -80,7 +80,7 @@ class ListenController extends WebController
             'activeAlbum' => $activeAlbum,
             'activeTrack' => $activeTrack,
             'activePlaylistSlug' => $activePlaylistSlug,
-            'playerQueue' => $activePlaylist?->queue_payload ?? $this->serializeTracks($songs),
+            'playerQueue' => $activePlaylist?->queue_payload ?? $this->serializeQueueTracks($songs),
             ...$this->interactionState($request),
         ]);
     }

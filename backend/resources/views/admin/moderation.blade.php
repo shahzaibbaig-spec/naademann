@@ -37,6 +37,7 @@
               <th class="pb-4">Artist</th>
               <th class="pb-4">Album</th>
               <th class="pb-4">Release Date</th>
+              <th class="pb-4">Queue</th>
               <th class="pb-4">Status</th>
               <th class="pb-4 text-right">Action</th>
             </tr>
@@ -57,6 +58,11 @@
                 <td class="py-4 text-white/60">{{ $track->album?->title ?? 'Single' }}</td>
                 <td class="py-4 text-white/60">{{ ($track->release_date ?: $track->album?->release_date)?->format('M d, Y') ?? 'TBA' }}</td>
                 <td class="py-4">
+                  <span class="rounded-full border px-3 py-1 text-xs uppercase tracking-[0.2em] {{ $track->is_featured ? 'border-neon-cyan/20 bg-neon-cyan/10 text-neon-cyan' : 'border-white/10 bg-white/5 text-white/55' }}">
+                    {{ $track->is_featured ? 'In Queue' : 'Hidden' }}
+                  </span>
+                </td>
+                <td class="py-4">
                   <span class="rounded-full border px-3 py-1 text-xs uppercase tracking-[0.2em] {{ $statusMeta[$track->moderation_status] ?? 'border-white/10 bg-white/5 text-white/70' }}">
                     {{ $track->moderation_status }}
                   </span>
@@ -70,6 +76,11 @@
                         <option value="{{ $status }}" @selected($track->moderation_status === $status)>{{ ucfirst($status) }}</option>
                       @endforeach
                     </select>
+                    <label class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/45 px-3 py-2 text-xs uppercase tracking-[0.18em] text-white/70">
+                      <input type="hidden" name="is_featured" value="0">
+                      <input type="checkbox" name="is_featured" value="1" @checked($track->is_featured) class="h-4 w-4 rounded border-white/20 bg-transparent text-neon-cyan focus:ring-neon-cyan/40">
+                      <span>Queue</span>
+                    </label>
                     <button type="submit" class="rounded-full border border-neon-cyan/20 bg-neon-cyan/10 px-4 py-2 text-xs font-semibold text-neon-cyan">Save</button>
                   </form>
                 </td>

@@ -18,7 +18,7 @@ class SearchPageController extends WebController
             'artists' => $results['artists'],
             'albums' => $results['albums'],
             'genres' => $results['genres'],
-            'playerQueue' => $this->serializeTracks($results['tracks']),
+            'playerQueue' => $this->serializeQueueTracks($results['tracks']),
             ...$this->interactionState($request),
         ]);
     }

@@ -965,7 +965,11 @@
   }
 
   function normalizeQueue(queue) {
-    return Array.isArray(queue) ? queue.map(normalizeTrack).filter(Boolean) : [];
+    return Array.isArray(queue)
+      ? queue
+          .map(normalizeTrack)
+          .filter((track) => Boolean(track && track.is_featured))
+      : [];
   }
 
   function normalizeTrack(track) {
@@ -986,6 +990,7 @@
       duration: Number(track.duration) || 0,
       audio_url: track.audio_url,
       cover_image_url: track.cover_image_url || defaultCover(),
+      is_featured: Boolean(track.is_featured),
       streams_count: Number(track.streams_count) || 0,
       artist,
       album,

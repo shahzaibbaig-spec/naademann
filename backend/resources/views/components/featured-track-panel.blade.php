@@ -13,6 +13,7 @@
             'duration' => $song->duration,
             'audio_url' => $song->audio_url,
             'cover_image_url' => $song->cover_image_url,
+            'is_featured' => (bool) $song->is_featured,
             'streams_count' => $song->streams_count,
             'artist' => $song->artist ? [
                 'id' => $song->artist->id,

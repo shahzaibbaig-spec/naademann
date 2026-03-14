@@ -20,6 +20,7 @@ class HomeController extends WebController
         $featuredSongs = Song::query()
             ->with(['artist', 'album'])
             ->where('moderation_status', 'approved')
+            ->where('is_featured', true)
             ->orderByDesc('is_featured')
             ->orderByDesc('approved_at')
             ->take(8)
@@ -72,7 +73,7 @@ class HomeController extends WebController
             'playlists' => $playlists,
             'stats' => $stats,
             'homepageVideoId' => PlatformSetting::youtubeVideoId($platformSettings['homepage_video'] ?? null),
-            'playerQueue' => $this->serializeTracks($latestSongs),
+            'playerQueue' => $this->serializeQueueTracks($featuredSongs->isNotEmpty() ? $featuredSongs : $latestSongs),
             ...$interactionState,
         ]);
     }

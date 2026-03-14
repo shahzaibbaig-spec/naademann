@@ -41,13 +41,20 @@ class TrackModerationController extends WebController
 
         $data = $request->validate([
             'moderation_status' => ['required', 'in:draft,pending,approved,rejected'],
+            'is_featured' => ['nullable', 'boolean'],
         ]);
 
-        $song->update([
+        $updates = [
             'moderation_status' => $data['moderation_status'],
             'approved_at' => $data['moderation_status'] === 'approved' ? now() : null,
             'published_at' => $data['moderation_status'] === 'approved' ? ($song->published_at ?? now()) : null,
-        ]);
+        ];
+
+        if ($request->has('is_featured')) {
+            $updates['is_featured'] = $request->boolean('is_featured');
+        }
+
+        $song->update($updates);
 
         return back()->with('status', 'Track moderation status updated.');
     }

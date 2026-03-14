@@ -67,7 +67,7 @@ class ArtistPageController extends WebController
             'relatedArtists' => $relatedArtists,
             'stats' => $stats,
             'featuredVideoId' => PlatformSetting::youtubeVideoId($platformSettings['artist_default_video'] ?? null),
-            'playerQueue' => $this->serializeTracks($approvedSongs),
+            'playerQueue' => $this->serializeQueueTracks($approvedSongs),
             ...$interactionState,
         ]);
     }

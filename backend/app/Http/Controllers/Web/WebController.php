@@ -32,6 +32,7 @@ abstract class WebController extends Controller
             'duration' => $song->duration,
             'audio_url' => $song->audio_url,
             'cover_image_url' => $song->cover_image_url,
+            'is_featured' => (bool) $song->is_featured,
             'streams_count' => $song->streams_count,
             'artist' => $song->artist ? [
                 'id' => $song->artist->id,
@@ -44,5 +45,14 @@ abstract class WebController extends Controller
                 'slug' => $song->album->slug,
             ] : null,
         ])->values()->all();
+    }
+
+    protected function serializeQueueTracks(Collection $songs): array
+    {
+        return $this->serializeTracks(
+            $songs
+                ->filter(fn (Song $song) => (bool) $song->is_featured)
+                ->values()
+        );
     }
 }

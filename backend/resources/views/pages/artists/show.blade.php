@@ -13,6 +13,7 @@
             'duration' => $song->duration,
             'audio_url' => $song->audio_url,
             'cover_image_url' => $song->cover_image_url,
+            'is_featured' => (bool) $song->is_featured,
             'streams_count' => $song->streams_count,
             'artist' => $song->artist ? [
                 'id' => $song->artist->id,
@@ -121,16 +122,26 @@
           @foreach ($topTracks as $song)
             @php
               $trackPayload = $serializeTrack($song);
+              $isQueueable = (bool) $song->is_featured;
             @endphp
-            <article class="artist-track-row" data-track-card='@json($trackPayload)'>
+            <article class="artist-track-row" @if ($isQueueable) data-track-card='@json($trackPayload)' @endif>
               <div class="flex min-w-0 items-center gap-4">
-                <button type="button" data-track-play class="artist-track-play" aria-label="Play {{ $song->title }}">
-                  <svg viewBox="0 0 24 24" class="ml-0.5 h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M8 6.5v11l9-5.5-9-5.5Z" /></svg>
-                </button>
+                @if ($isQueueable)
+                  <button type="button" data-track-play class="artist-track-play" aria-label="Play {{ $song->title }}">
+                    <svg viewBox="0 0 24 24" class="ml-0.5 h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M8 6.5v11l9-5.5-9-5.5Z" /></svg>
+                  </button>
+                @else
+                  <button type="button" disabled title="Only featured songs can be queued" class="artist-track-play cursor-not-allowed opacity-50" aria-label="{{ $song->title }} is not queue-enabled">
+                    <svg viewBox="0 0 24 24" class="ml-0.5 h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M8 6.5v11l9-5.5-9-5.5Z" /></svg>
+                  </button>
+                @endif
                 <img src="{{ $song->cover_image_url }}" alt="{{ $song->title }}" class="h-16 w-16 rounded-[1.15rem] object-cover">
                 <div class="min-w-0">
                   <p class="truncate font-semibold">{{ $song->title }}</p>
                   <p class="mt-1 truncate text-sm text-white/50">{{ $song->album?->title ?? 'Single Release' }} - {{ $song->genre }}</p>
+                  @unless ($isQueueable)
+                    <p class="mt-1 text-[11px] uppercase tracking-[0.22em] text-white/35">Not in queue</p>
+                  @endunless
                 </div>
               </div>
               <div class="flex items-center gap-4 text-sm text-white/50">
