@@ -15,8 +15,13 @@ use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\Creator\DashboardController as CreatorDashboardController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\ListenController;
+use App\Http\Controllers\Web\PublicStorageController;
 use App\Http\Controllers\Web\SearchPageController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/storage/{path}', PublicStorageController::class)
+    ->where('path', '.*')
+    ->name('storage.public');
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/listen', ListenController::class)->name('listen');

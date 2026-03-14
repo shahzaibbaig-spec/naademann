@@ -18,4 +18,14 @@ class UserPolicy
     {
         return $this->isAdmin($user);
     }
+
+    public function create(User $user): bool
+    {
+        return $this->isSuperAdmin($user);
+    }
+
+    public function delete(User $user, User $target): bool
+    {
+        return $this->isSuperAdmin($user);
+    }
 }

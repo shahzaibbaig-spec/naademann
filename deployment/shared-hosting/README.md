@@ -44,5 +44,6 @@ php artisan view:cache
 - `laravel-app/bootstrap/public_path.php` is included so `php artisan storage:link` creates `public_html/storage`.
 - The package intentionally does not copy `public/storage` into `public_html`, so the storage symlink can be created cleanly.
 - Uploaded files already live under `laravel-app/storage/app/public`, so they become public after `storage:link`.
+- The app now includes a `/storage/{path}` Laravel fallback, so uploaded covers and audio still load if the shared host refuses to create the symlink.
 - If your hosting layout is not `~/laravel-app` and `~/public_html`, update both `public_html/index.php` and `laravel-app/bootstrap/public_path.php`.
-- If your host does not allow symlinks, tell me and I can prepare a no-symlink upload fallback.
+- `php artisan storage:link` is still recommended because direct web-server file serving is faster than routing uploads through PHP.
