@@ -18,6 +18,8 @@ deployment/shared-hosting/build/
   public_html/
 ```
 
+`build/` is generated output only. It should be recreated when needed and not committed back to Git.
+
 Use it like this:
 
 1. Upload `laravel-app` to `/home/USERNAME/laravel-app`.

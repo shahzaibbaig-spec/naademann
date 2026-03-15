@@ -1,0 +1,8 @@
+/server.log
+/server.err
+/composer.phar
+/deployment/shared-hosting/build/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
