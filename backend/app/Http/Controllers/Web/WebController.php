@@ -49,10 +49,6 @@ abstract class WebController extends Controller
 
     protected function serializeQueueTracks(Collection $songs): array
     {
-        return $this->serializeTracks(
-            $songs
-                ->filter(fn (Song $song) => (bool) $song->is_featured)
-                ->values()
-        );
+        return $this->serializeTracks($songs->values());
     }
 }

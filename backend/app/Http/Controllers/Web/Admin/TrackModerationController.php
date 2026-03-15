@@ -58,4 +58,69 @@ class TrackModerationController extends WebController
 
         return back()->with('status', 'Track moderation status updated.');
     }
+
+    public function bulk(Request $request): RedirectResponse
+    {
+        $this->authorize('viewAny', Song::class);
+
+        $data = $request->validate([
+            'track_ids' => ['required', 'array', 'min:1'],
+            'track_ids.*' => ['integer', 'distinct', 'exists:songs,id'],
+            'bulk_action' => ['required', 'in:publish,draft,delete'],
+        ], [
+            'track_ids.required' => 'Select at least one track before applying a bulk action.',
+            'track_ids.min' => 'Select at least one track before applying a bulk action.',
+            'bulk_action.required' => 'Choose a bulk action to continue.',
+        ]);
+
+        $songs = Song::query()
+            ->whereIn('id', $data['track_ids'])
+            ->get();
+
+        if ($songs->isEmpty()) {
+            return back()->withErrors([
+                'track_ids' => 'No valid tracks were selected.',
+            ]);
+        }
+
+        if ($data['bulk_action'] === 'delete') {
+            foreach ($songs as $song) {
+                $this->authorize('delete', $song);
+            }
+
+            $deletedCount = Song::query()
+                ->whereIn('id', $songs->pluck('id'))
+                ->delete();
+
+            return back()->with('status', $deletedCount.' tracks deleted successfully.');
+        }
+
+        foreach ($songs as $song) {
+            $this->authorize('update', $song);
+        }
+
+        $now = now();
+
+        if ($data['bulk_action'] === 'publish') {
+            foreach ($songs as $song) {
+                $song->update([
+                    'moderation_status' => 'approved',
+                    'approved_at' => $now,
+                    'published_at' => $song->published_at ?: $now,
+                ]);
+            }
+
+            return back()->with('status', $songs->count().' tracks published successfully.');
+        }
+
+        foreach ($songs as $song) {
+            $song->update([
+                'moderation_status' => 'draft',
+                'approved_at' => null,
+                'published_at' => null,
+            ]);
+        }
+
+        return back()->with('status', $songs->count().' tracks moved to draft successfully.');
+    }
 }

@@ -24,4 +24,9 @@ class SongPolicy
     {
         return $this->isAdmin($user);
     }
+
+    public function delete(User $user, Song $song): bool
+    {
+        return $this->isAdmin($user);
+    }
 }

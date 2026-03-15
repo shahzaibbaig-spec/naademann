@@ -25,6 +25,7 @@ class ArtistPageController extends WebController
     {
         $interactionState = $this->interactionState($request);
         $platformSettings = $interactionState['platformSettings'];
+        $artistVideoSetting = $platformSettings['artist_default_video'] ?? null;
 
         $artist->load([
             'albums' => fn ($query) => $query->orderByDesc('release_date'),
@@ -66,7 +67,9 @@ class ArtistPageController extends WebController
             'collaborators' => $collaborators,
             'relatedArtists' => $relatedArtists,
             'stats' => $stats,
-            'featuredVideoId' => PlatformSetting::youtubeVideoId($platformSettings['artist_default_video'] ?? null),
+            'featuredVideoId' => PlatformSetting::youtubeVideoId($artistVideoSetting),
+            'featuredVideoEmbedUrl' => PlatformSetting::youtubeEmbedUrl($artistVideoSetting),
+            'featuredVideoWatchUrl' => PlatformSetting::youtubeWatchUrl($artistVideoSetting),
             'playerQueue' => $this->serializeQueueTracks($approvedSongs),
             ...$interactionState,
         ]);

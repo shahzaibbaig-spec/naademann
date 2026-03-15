@@ -4,6 +4,7 @@
 
 @php
     $setting = fn (string $key, string $fallback = '') => old('settings.'.$key, optional($settings->get($key))->value ?? $fallback);
+    $logoImageUrl = optional($settings->get('logo_image_url'))->value;
 @endphp
 
 @section('content')
@@ -19,7 +20,7 @@
         <p class="text-sm text-white/45">Changes update shared brand content and featured video embeds across the site.</p>
       </div>
 
-      <form method="POST" action="{{ route('admin.settings.update') }}" class="mt-8 grid gap-8">
+      <form method="POST" action="{{ route('admin.settings.update') }}" enctype="multipart/form-data" class="mt-8 grid gap-8">
         @csrf
         @method('PUT')
 
@@ -34,6 +35,32 @@
               <span class="mb-2 block text-sm text-white/50">Tagline</span>
               <input name="settings[platform_tagline]" type="text" value="{{ $setting('platform_tagline', 'The Sound of the Soul') }}" class="w-full bg-transparent text-white outline-none">
             </label>
+          </div>
+
+          <div class="mt-6 grid gap-4 md:grid-cols-[0.6fr_1.4fr]">
+            <div class="rounded-[1.5rem] border border-white/10 bg-slate-950/45 p-4">
+              <p class="mb-2 text-sm text-white/50">Current Logo</p>
+              <div class="flex h-28 items-center justify-center rounded-[1rem] border border-white/10 bg-slate-950/70 p-3">
+                @if ($logoImageUrl)
+                  <img src="{{ $logoImageUrl }}" alt="Site logo" class="max-h-full max-w-full object-contain">
+                @else
+                  <span class="text-xs uppercase tracking-[0.2em] text-white/45">No image</span>
+                @endif
+              </div>
+            </div>
+
+            <div class="grid gap-4">
+              <label class="glass-card rounded-[1.5rem] border border-white/10 p-4">
+                <span class="mb-2 block text-sm text-white/50">Upload Logo Image</span>
+                <input name="logo_image" type="file" accept="image/*" class="w-full text-sm text-white/70">
+                <span class="mt-2 block text-xs text-white/45">Recommended: square PNG/JPG, transparent background preferred.</span>
+              </label>
+
+              <label class="glass-card inline-flex items-center gap-3 rounded-[1.5rem] border border-white/10 p-4 text-sm text-white/70">
+                <input type="checkbox" name="remove_logo_image" value="1" class="h-4 w-4 rounded border-white/20 bg-transparent text-neon-cyan focus:ring-neon-cyan/40">
+                <span>Remove logo image and use text-only logo</span>
+              </label>
+            </div>
           </div>
         </section>
 

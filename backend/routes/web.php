@@ -79,6 +79,7 @@ Route::prefix('admin')
         Route::get('/uploads', [AdminUploadController::class, 'index'])->name('uploads.index');
         Route::post('/uploads', [AdminUploadController::class, 'store'])->name('uploads.store');
         Route::get('/moderation', [TrackModerationController::class, 'index'])->name('moderation.index');
+        Route::post('/moderation/bulk', [TrackModerationController::class, 'bulk'])->name('moderation.bulk');
         Route::put('/moderation/{song}', [TrackModerationController::class, 'update'])->name('moderation.update');
         Route::get('/genres', [GenreController::class, 'index'])->name('genres.index');
         Route::post('/genres', [GenreController::class, 'store'])->name('genres.store');

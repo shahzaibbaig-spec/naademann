@@ -81,15 +81,15 @@ function renderChrome() {
 
 function buildHeader() {
   return `
-    <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/65 backdrop-blur-xl">
+    <header class="sticky top-0 z-50 border-b border-neon-cyan/25 bg-[rgba(10,15,11,0.9)] backdrop-blur-2xl shadow-[0_14px_34px_rgba(6,10,7,0.42)]">
       <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         <a href="index.html" class="flex items-center gap-3">
           <span class="glass-card neon-border flex h-11 w-11 items-center justify-center rounded-2xl">
             ${brandIcon("h-6 w-6 text-neon-cyan")}
           </span>
           <span>
-            <span class="brand-title block text-lg font-semibold">Naad-e-Maan</span>
-            <span class="block text-[0.65rem] uppercase tracking-[0.35em] text-white/45">Sound Resonance</span>
+            <span class="brand-title block text-lg font-semibold text-neon-cyan">Naad-e-Maan</span>
+            <span class="block text-[0.65rem] uppercase tracking-[0.35em] text-neon-cyan/70">Sound Resonance</span>
           </span>
         </a>
 
@@ -97,9 +97,9 @@ function buildHeader() {
           ${navLink("index.html", "home", "Home")}
           ${navLink("artist.html", "artists", "Artists")}
           ${navLink("genres.html", "genres", "Genres")}
-          <a href="player.html" class="pill-nav rounded-full border border-white/10 px-4 py-2 text-sm text-white/70">Videos</a>
+          <a href="player.html" class="pill-nav rounded-full border border-neon-cyan/25 bg-neon-cyan/5 px-4 py-2 text-sm text-neon-cyan/90">Videos</a>
           ${navLink("creators.html", "creators", "Creators")}
-          <a href="#contact" class="pill-nav rounded-full border border-white/10 px-4 py-2 text-sm text-white/70">Contact</a>
+          <a href="#contact" class="pill-nav rounded-full border border-neon-cyan/25 bg-neon-cyan/5 px-4 py-2 text-sm text-neon-cyan/90">Contact</a>
         </nav>
 
         <button
@@ -107,7 +107,7 @@ function buildHeader() {
           data-menu-toggle
           aria-expanded="false"
           aria-label="Toggle navigation"
-          class="glass-card flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 md:hidden"
+          class="glass-card flex h-11 w-11 items-center justify-center rounded-2xl border border-neon-cyan/25 bg-neon-cyan/5 text-neon-cyan md:hidden"
         >
           <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8">
             <path d="M4 7h16M4 12h16M4 17h16" />
@@ -115,14 +115,14 @@ function buildHeader() {
         </button>
       </div>
 
-      <div data-mobile-menu class="mobile-menu border-t border-white/10 md:hidden">
+      <div data-mobile-menu class="mobile-menu border-t border-neon-cyan/20 md:hidden">
         <nav class="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-4">
-          <a href="index.html" class="rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/80">Home</a>
-          <a href="artist.html" class="rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/80">Artists</a>
-          <a href="genres.html" class="rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/80">Genres</a>
-          <a href="player.html" class="rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/80">Videos</a>
-          <a href="creators.html" class="rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/80">Creators</a>
-          <a href="#contact" class="rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/80">Contact</a>
+          <a href="index.html" class="rounded-2xl border border-neon-cyan/25 bg-neon-cyan/5 px-4 py-3 text-sm text-neon-cyan/90">Home</a>
+          <a href="artist.html" class="rounded-2xl border border-neon-cyan/25 bg-neon-cyan/5 px-4 py-3 text-sm text-neon-cyan/90">Artists</a>
+          <a href="genres.html" class="rounded-2xl border border-neon-cyan/25 bg-neon-cyan/5 px-4 py-3 text-sm text-neon-cyan/90">Genres</a>
+          <a href="player.html" class="rounded-2xl border border-neon-cyan/25 bg-neon-cyan/5 px-4 py-3 text-sm text-neon-cyan/90">Videos</a>
+          <a href="creators.html" class="rounded-2xl border border-neon-cyan/25 bg-neon-cyan/5 px-4 py-3 text-sm text-neon-cyan/90">Creators</a>
+          <a href="#contact" class="rounded-2xl border border-neon-cyan/25 bg-neon-cyan/5 px-4 py-3 text-sm text-neon-cyan/90">Contact</a>
         </nav>
       </div>
     </header>
@@ -173,7 +173,7 @@ function buildFooter() {
 }
 
 function navLink(href, page, label) {
-  return `<a href="${href}" data-nav-link="${page}" class="pill-nav rounded-full border border-white/10 px-4 py-2 text-sm text-white/70">${label}</a>`;
+  return `<a href="${href}" data-nav-link="${page}" class="pill-nav rounded-full border border-neon-cyan/25 bg-neon-cyan/5 px-4 py-2 text-sm text-neon-cyan/90">${label}</a>`;
 }
 
 function socialLink(icon) {

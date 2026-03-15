@@ -13,7 +13,7 @@
         theme: {
           extend: {
             colors: {
-              neon: { cyan: "#3bf2ff", blue: "#4f7cff", pink: "#ff4fd8" },
+              neon: { cyan: "#A8D5A2", blue: "#6F9166", pink: "#101512" },
             },
             fontFamily: {
               display: ["Space Grotesk", "sans-serif"],
@@ -24,7 +24,13 @@
       };
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{{ asset('css/naad.css') }}">
+    @php
+      $naadCssPath = public_path('css/naad.css');
+      $naadJsPath = public_path('js/naad.js');
+      $naadCssVersion = file_exists($naadCssPath) ? filemtime($naadCssPath) : null;
+      $naadJsVersion = file_exists($naadJsPath) ? filemtime($naadJsPath) : null;
+    @endphp
+    <link rel="stylesheet" href="{{ asset('css/naad.css') }}{{ $naadCssVersion ? '?v=' . $naadCssVersion : '' }}">
   </head>
   @php
     $naadBootstrap = [
@@ -64,7 +70,7 @@
 
     <x-footer :platform-settings="$platformSettings ?? collect()" />
     <x-player-widget :queue="$playerQueue ?? []" />
-    <script src="{{ asset('js/naad.js') }}"></script>
+    <script src="{{ asset('js/naad.js') }}{{ $naadJsVersion ? '?v=' . $naadJsVersion : '' }}"></script>
     @stack('scripts')
   </body>
 </html>

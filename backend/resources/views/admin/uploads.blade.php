@@ -42,7 +42,12 @@
           </div>
           <div class="rounded-[1.5rem] border border-white/10 bg-slate-950/50 px-4 py-3 text-sm text-white/55">
             <p>Accepted audio: <span class="text-white/80">MP3</span></p>
-            <p class="mt-1">Max upload size: <span class="text-white/80">20 MB</span></p>
+            <p class="mt-1">Max upload size: <span class="text-white/80">{{ $effectiveAudioUploadLimitLabel }}</span></p>
+            @if ($audioUploadLimitConstrained)
+              <p class="mt-2 text-xs leading-6 text-neon-pink">
+                Current server upload limit is below the app target of {{ $targetAudioUploadLimitLabel }}.
+              </p>
+            @endif
           </div>
         </div>
 

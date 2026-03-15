@@ -961,14 +961,14 @@
     const max = Number(input.max || 100);
     const value = Number(input.value || 0);
     const percent = max > min ? ((value - min) / (max - min)) * 100 : 0;
-    input.style.background = "linear-gradient(90deg, rgba(59,242,255,0.95) 0%, rgba(255,79,216,0.9) " + percent + "%, rgba(255,255,255,0.12) " + percent + "%, rgba(255,255,255,0.12) 100%)";
+    input.style.background = "linear-gradient(90deg, rgba(168,213,162,0.95) 0%, rgba(16,21,18,0.9) " + percent + "%, rgba(255,255,255,0.12) " + percent + "%, rgba(255,255,255,0.12) 100%)";
   }
 
   function normalizeQueue(queue) {
     return Array.isArray(queue)
       ? queue
           .map(normalizeTrack)
-          .filter((track) => Boolean(track && track.is_featured))
+          .filter(Boolean)
       : [];
   }
 

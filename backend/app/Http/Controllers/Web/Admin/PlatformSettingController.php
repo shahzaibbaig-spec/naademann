@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web\Admin;
 
+use App\Http\Controllers\Concerns\HandlesPublicUploads;
 use App\Http\Controllers\Web\WebController;
 use App\Models\PlatformSetting;
 use Illuminate\Http\RedirectResponse;
@@ -9,6 +10,8 @@ use Illuminate\Http\Request;
 
 class PlatformSettingController extends WebController
 {
+    use HandlesPublicUploads;
+
     public function index(Request $request)
     {
         $this->authorize('viewAny', PlatformSetting::class);
@@ -34,6 +37,8 @@ class PlatformSettingController extends WebController
             'settings.social_instagram' => ['nullable', 'url', 'max:255'],
             'settings.social_youtube' => ['nullable', 'url', 'max:255'],
             'settings.social_soundcloud' => ['nullable', 'url', 'max:255'],
+            'logo_image' => ['nullable', 'image', 'max:4096'],
+            'remove_logo_image' => ['nullable', 'boolean'],
         ]);
 
         $settings = PlatformSetting::syncDefaults();
@@ -46,6 +51,24 @@ class PlatformSettingController extends WebController
             $settings[$key]->update([
                 'value' => $value,
             ]);
+        }
+
+        if ($request->boolean('remove_logo_image')) {
+            $settings['logo_image_url']->update([
+                'value' => null,
+            ]);
+        } else {
+            $logoUrl = $this->storePublicUpload(
+                $request->file('logo_image'),
+                'branding',
+                $settings['logo_image_url']->value
+            );
+
+            if ($logoUrl !== $settings['logo_image_url']->value) {
+                $settings['logo_image_url']->update([
+                    'value' => $logoUrl,
+                ]);
+            }
         }
 
         return back()->with('status', 'Platform settings saved.');

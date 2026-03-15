@@ -17,6 +17,8 @@ class UploadController extends WebController
     public function index(Request $request)
     {
         $this->authorize('viewAny', Song::class);
+        $applicationAudioLimitKilobytes = 20480;
+        $effectiveAudioLimitKilobytes = $this->effectiveUploadLimitKilobytes($applicationAudioLimitKilobytes);
 
         return view('admin.uploads', [
             'artists' => Artist::query()
@@ -32,6 +34,9 @@ class UploadController extends WebController
                 ->latest()
                 ->take(8)
                 ->get(),
+            'effectiveAudioUploadLimitLabel' => $this->formatKilobytes($effectiveAudioLimitKilobytes),
+            'targetAudioUploadLimitLabel' => $this->formatKilobytes($applicationAudioLimitKilobytes),
+            'audioUploadLimitConstrained' => $effectiveAudioLimitKilobytes < $applicationAudioLimitKilobytes,
             ...$this->interactionState($request),
         ]);
     }
@@ -39,6 +44,8 @@ class UploadController extends WebController
     public function store(Request $request): RedirectResponse
     {
         $this->authorize('create', Song::class);
+        $applicationAudioLimitKilobytes = 20480;
+        $effectiveAudioLimitKilobytes = $this->effectiveUploadLimitKilobytes($applicationAudioLimitKilobytes);
 
         $data = $request->validate([
             'artist_id' => ['required', 'integer', 'exists:artists,id'],
@@ -49,8 +56,11 @@ class UploadController extends WebController
             'lyrics' => ['nullable', 'string'],
             'release_date' => ['nullable', 'date'],
             'publish_now' => ['nullable', 'boolean'],
-            'audio_file' => ['required', 'file', 'mimes:mp3', 'max:20480'],
+            'audio_file' => ['required', 'file', 'mimes:mp3', "max:{$effectiveAudioLimitKilobytes}"],
             'cover_image' => ['nullable', 'image', 'max:4096'],
+        ], [
+            'audio_file.uploaded' => $this->uploadFailedValidationMessage('audio file', $effectiveAudioLimitKilobytes),
+            'audio_file.max' => 'The audio file may not be greater than '.$this->formatKilobytes($effectiveAudioLimitKilobytes).'.',
         ]);
 
         $artist = Artist::query()->findOrFail($data['artist_id']);

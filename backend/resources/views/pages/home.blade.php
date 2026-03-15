@@ -173,8 +173,12 @@
         </div>
       </div>
       <div class="video-shell shadow-[0_0_42px_rgba(59,242,255,0.08)]">
-        <iframe src="https://www.youtube.com/embed/{{ $homepageVideoId }}?rel=0" title="Naad-e-Maan Video Spotlight" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe src="{{ $homepageVideoEmbedUrl }}" title="Naad-e-Maan Video Spotlight" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
+      <p class="mt-3 text-xs text-neon-cyan/70">
+        Video not loading in your browser?
+        <a href="{{ $homepageVideoWatchUrl }}" target="_blank" rel="noreferrer" class="underline decoration-neon-cyan/50 underline-offset-4 transition hover:text-neon-cyan">Open on YouTube</a>
+      </p>
     </div>
   </section>
 

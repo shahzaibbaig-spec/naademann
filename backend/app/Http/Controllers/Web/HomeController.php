@@ -16,6 +16,7 @@ class HomeController extends WebController
     {
         $interactionState = $this->interactionState($request);
         $platformSettings = $interactionState['platformSettings'];
+        $homepageVideoSetting = $platformSettings['homepage_video'] ?? null;
 
         $featuredSongs = Song::query()
             ->with(['artist', 'album'])
@@ -72,7 +73,9 @@ class HomeController extends WebController
             'genres' => $genres,
             'playlists' => $playlists,
             'stats' => $stats,
-            'homepageVideoId' => PlatformSetting::youtubeVideoId($platformSettings['homepage_video'] ?? null),
+            'homepageVideoId' => PlatformSetting::youtubeVideoId($homepageVideoSetting),
+            'homepageVideoEmbedUrl' => PlatformSetting::youtubeEmbedUrl($homepageVideoSetting),
+            'homepageVideoWatchUrl' => PlatformSetting::youtubeWatchUrl($homepageVideoSetting),
             'playerQueue' => $this->serializeQueueTracks($featuredSongs->isNotEmpty() ? $featuredSongs : $latestSongs),
             ...$interactionState,
         ]);

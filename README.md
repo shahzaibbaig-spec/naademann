@@ -34,3 +34,12 @@ If you still deploy through a shared-hosting package, generate it locally with:
 ```
 
 That command recreates `deployment/shared-hosting/build/` from `backend/`.
+
+## Local uploads
+
+For local upload testing, start PHP's built-in server directly with higher upload limits:
+
+```powershell
+cd .\backend\public
+php -d upload_max_filesize=64M -d post_max_size=64M -d max_execution_time=120 -S 127.0.0.1:8001 ..\vendor\laravel\framework\src\Illuminate\Foundation\resources\server.php
+```

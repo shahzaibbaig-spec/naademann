@@ -20,6 +20,8 @@ class DashboardController extends WebController
     {
         $artist = $request->user()->artists()->with(['albums', 'songs.album'])->firstOrFail();
         $songIds = $artist->songs->pluck('id');
+        $applicationAudioLimitKilobytes = 20480;
+        $effectiveAudioLimitKilobytes = $this->effectiveUploadLimitKilobytes($applicationAudioLimitKilobytes);
 
         $analytics = [
             'monthly_listeners' => $artist->monthly_listeners,
@@ -36,6 +38,9 @@ class DashboardController extends WebController
             'tracks' => $artist->songs->sortByDesc('created_at'),
             'albums' => $artist->albums->sortByDesc('release_date'),
             'genres' => Genre::query()->where('is_active', true)->orderBy('sort_order')->get(),
+            'effectiveAudioUploadLimitLabel' => $this->formatKilobytes($effectiveAudioLimitKilobytes),
+            'targetAudioUploadLimitLabel' => $this->formatKilobytes($applicationAudioLimitKilobytes),
+            'audioUploadLimitConstrained' => $effectiveAudioLimitKilobytes < $applicationAudioLimitKilobytes,
             ...$this->interactionState($request),
         ]);
     }
@@ -43,6 +48,8 @@ class DashboardController extends WebController
     public function storeTrack(Request $request): RedirectResponse
     {
         $artist = $request->user()->artists()->firstOrFail();
+        $applicationAudioLimitKilobytes = 20480;
+        $effectiveAudioLimitKilobytes = $this->effectiveUploadLimitKilobytes($applicationAudioLimitKilobytes);
 
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -52,8 +59,11 @@ class DashboardController extends WebController
             'lyrics' => ['nullable', 'string'],
             'release_date' => ['nullable', 'date'],
             'publish_now' => ['nullable', 'boolean'],
-            'audio_file' => ['required', 'file', 'mimes:mp3', 'max:20480'],
+            'audio_file' => ['required', 'file', 'mimes:mp3', "max:{$effectiveAudioLimitKilobytes}"],
             'cover_image' => ['nullable', 'image', 'max:4096'],
+        ], [
+            'audio_file.uploaded' => $this->uploadFailedValidationMessage('audio file', $effectiveAudioLimitKilobytes),
+            'audio_file.max' => 'The audio file may not be greater than '.$this->formatKilobytes($effectiveAudioLimitKilobytes).'.',
         ]);
 
         $album = !empty($data['album_id']) ? $artist->albums()->findOrFail($data['album_id']) : null;

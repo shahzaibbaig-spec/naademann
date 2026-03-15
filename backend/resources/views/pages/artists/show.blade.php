@@ -122,7 +122,7 @@
           @foreach ($topTracks as $song)
             @php
               $trackPayload = $serializeTrack($song);
-              $isQueueable = (bool) $song->is_featured;
+              $isQueueable = filled($song->audio_url);
             @endphp
             <article class="artist-track-row" @if ($isQueueable) data-track-card='@json($trackPayload)' @endif>
               <div class="flex min-w-0 items-center gap-4">
@@ -131,7 +131,7 @@
                     <svg viewBox="0 0 24 24" class="ml-0.5 h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M8 6.5v11l9-5.5-9-5.5Z" /></svg>
                   </button>
                 @else
-                  <button type="button" disabled title="Only featured songs can be queued" class="artist-track-play cursor-not-allowed opacity-50" aria-label="{{ $song->title }} is not queue-enabled">
+                  <button type="button" disabled title="Audio file is unavailable for this track" class="artist-track-play cursor-not-allowed opacity-50" aria-label="{{ $song->title }} audio unavailable">
                     <svg viewBox="0 0 24 24" class="ml-0.5 h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M8 6.5v11l9-5.5-9-5.5Z" /></svg>
                   </button>
                 @endif
@@ -140,7 +140,7 @@
                   <p class="truncate font-semibold">{{ $song->title }}</p>
                   <p class="mt-1 truncate text-sm text-white/50">{{ $song->album?->title ?? 'Single Release' }} - {{ $song->genre }}</p>
                   @unless ($isQueueable)
-                    <p class="mt-1 text-[11px] uppercase tracking-[0.22em] text-white/35">Not in queue</p>
+                    <p class="mt-1 text-[11px] uppercase tracking-[0.22em] text-white/35">Audio unavailable</p>
                   @endunless
                 </div>
               </div>
@@ -160,8 +160,12 @@
           A highlighted live moment that extends the artist atmosphere beyond the player and into a full-screen visual performance.
         </p>
         <div class="video-shell mt-8">
-          <iframe src="https://www.youtube.com/embed/{{ $featuredVideoId }}?rel=0" title="{{ $artist->name }} featured video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe src="{{ $featuredVideoEmbedUrl }}" title="{{ $artist->name }} featured video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
+        <p class="mt-3 text-xs text-neon-cyan/70">
+          Video not loading in your browser?
+          <a href="{{ $featuredVideoWatchUrl }}" target="_blank" rel="noreferrer" class="underline decoration-neon-cyan/50 underline-offset-4 transition hover:text-neon-cyan">Open on YouTube</a>
+        </p>
       </section>
     </div>
   </section>

@@ -19,6 +19,7 @@ class PlatformSetting extends Model
     {
         return [
             'logo_text' => ['label' => 'Logo Text', 'type' => 'text', 'value' => 'Naad-e-Maan'],
+            'logo_image_url' => ['label' => 'Logo Image URL', 'type' => 'url', 'value' => null],
             'platform_tagline' => ['label' => 'Platform Tagline', 'type' => 'text', 'value' => 'The Sound of the Soul'],
             'homepage_video' => ['label' => 'Homepage Video URL or ID', 'type' => 'text', 'value' => 'ScMzIvxBSi4'],
             'artist_default_video' => ['label' => 'Artist Default Video URL or ID', 'type' => 'text', 'value' => 'ScMzIvxBSi4'],
@@ -38,8 +39,16 @@ class PlatformSetting extends Model
             return $fallback;
         }
 
+        if (preg_match('/src=[\'"]([^\'"]+)[\'"]/i', $value, $matches) === 1) {
+            $value = trim((string) ($matches[1] ?? ''));
+        }
+
         if (preg_match('/^[A-Za-z0-9_-]{11}$/', $value) === 1) {
             return $value;
+        }
+
+        if (preg_match('~(?:youtu\.be/|youtube\.com/(?:watch\?[^#\s]*?v=|embed/|shorts/|live/))([A-Za-z0-9_-]{11})~i', $value, $matches) === 1) {
+            return (string) $matches[1];
         }
 
         $query = parse_url($value, PHP_URL_QUERY);
@@ -61,6 +70,20 @@ class PlatformSetting extends Model
         }
 
         return $fallback;
+    }
+
+    public static function youtubeEmbedUrl(?string $value, string $fallback = 'ScMzIvxBSi4'): string
+    {
+        $id = static::youtubeVideoId($value, $fallback);
+
+        return 'https://www.youtube-nocookie.com/embed/'.$id.'?rel=0&modestbranding=1';
+    }
+
+    public static function youtubeWatchUrl(?string $value, string $fallback = 'ScMzIvxBSi4'): string
+    {
+        $id = static::youtubeVideoId($value, $fallback);
+
+        return 'https://www.youtube.com/watch?v='.$id;
     }
 
     public static function syncDefaults(): Collection
